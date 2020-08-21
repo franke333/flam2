@@ -1,0 +1,9 @@
+c:\users\františek\documents\visual studio 2015\Projects\flam2\flam2\bin\Debug\flam2.exe.config
+c:\users\františek\documents\visual studio 2015\Projects\flam2\flam2\bin\Debug\flam2.exe
+c:\users\františek\documents\visual studio 2015\Projects\flam2\flam2\bin\Debug\flam2.pdb
+c:\users\františek\documents\visual studio 2015\Projects\flam2\flam2\obj\Debug\flam2.csprojResolveAssemblyReference.cache
+c:\users\františek\documents\visual studio 2015\Projects\flam2\flam2\obj\Debug\flam2.Form1.resources
+c:\users\františek\documents\visual studio 2015\Projects\flam2\flam2\obj\Debug\flam2.Properties.Resources.resources
+c:\users\františek\documents\visual studio 2015\Projects\flam2\flam2\obj\Debug\flam2.csproj.GenerateResource.Cache
+c:\users\františek\documents\visual studio 2015\Projects\flam2\flam2\obj\Debug\flam2.exe
+c:\users\františek\documents\visual studio 2015\Projects\flam2\flam2\obj\Debug\flam2.pdb
