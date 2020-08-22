@@ -7,3 +7,13 @@ c:\users\františek\documents\visual studio 2015\Projects\flam2\flam2\obj\Debug\
 c:\users\františek\documents\visual studio 2015\Projects\flam2\flam2\obj\Debug\flam2.csproj.GenerateResource.Cache
 c:\users\františek\documents\visual studio 2015\Projects\flam2\flam2\obj\Debug\flam2.exe
 c:\users\františek\documents\visual studio 2015\Projects\flam2\flam2\obj\Debug\flam2.pdb
+C:\Users\srbfr\Desktop\Examples\flam2\bin\Debug\flam2.exe.config
+C:\Users\srbfr\Desktop\Examples\flam2\bin\Debug\flam2.exe
+C:\Users\srbfr\Desktop\Examples\flam2\bin\Debug\flam2.pdb
+C:\Users\srbfr\Desktop\Examples\flam2\obj\Debug\flam2.csprojAssemblyReference.cache
+C:\Users\srbfr\Desktop\Examples\flam2\obj\Debug\flam2.Form1.resources
+C:\Users\srbfr\Desktop\Examples\flam2\obj\Debug\flam2.Properties.Resources.resources
+C:\Users\srbfr\Desktop\Examples\flam2\obj\Debug\flam2.csproj.GenerateResource.cache
+C:\Users\srbfr\Desktop\Examples\flam2\obj\Debug\flam2.csproj.CoreCompileInputs.cache
+C:\Users\srbfr\Desktop\Examples\flam2\obj\Debug\flam2.exe
+C:\Users\srbfr\Desktop\Examples\flam2\obj\Debug\flam2.pdb
