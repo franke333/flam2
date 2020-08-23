@@ -53,7 +53,7 @@ namespace flam2
             return new Tuple<int, int>((int)x, (int)y);
         }
 
-        public Bitmap Run()
+        public Bitmap Run(Form1 form)
         {
             UInt32[,] r = new UInt32[width * oversample, height * oversample];
             UInt32[,] g = new UInt32[width * oversample, height * oversample];
@@ -69,9 +69,15 @@ namespace flam2
             Random rand = new Random();
             Point postion = new Point((float)(rand.NextDouble()*2-1), (float)(rand.NextDouble() * 2 - 1),Color.White);
             ulong iters = (ulong)width * (ulong)oversample * (ulong)height * (ulong)oversample * (ulong)quality;
+            form.setProgress((int)(iters/1000));
             for (ulong i = 0; i < iters; i++)
             {
+                if (i % 1000==0)
+                {
+                    form.updateProgress();
+                }
                 int currFunc = chooseFuncIndex((float)rand.NextDouble() * weightSum);
+                Point help = postion;
                 postion = funcs[currFunc].Apply(postion);
                 if (i > 20)
                 {
@@ -148,7 +154,12 @@ namespace flam2
                     int finalG = (int)(G * (Math.Log10(V) / maxV));
                     int finalB = (int)(B * (Math.Log10(V) / maxV));
 
-                    if(V>0) bmp.SetPixel(x,y,Color.FromArgb(finalR,finalG,finalB));
+                    //Apply Gamma
+                    finalR = (int)(255 * Math.Pow(finalR / 255f, 1 / gamma));
+                    finalG = (int)(255 * Math.Pow(finalG / 255f, 1 / gamma));
+                    finalB = (int)(255 * Math.Pow(finalB / 255f, 1 / gamma));
+
+                    if (V>0) bmp.SetPixel(x,y,Color.FromArgb(finalR,finalG,finalB));
                 }
             }
 

@@ -11,7 +11,11 @@ namespace flam2
     {
         static private Tuple<Color, Color>[] palette =
         {
-            new Tuple<Color,Color>(Color.FromArgb(37,19,201),Color.FromArgb(255,120,5))
+            new Tuple<Color,Color>(Color.FromArgb(37,19,201),Color.FromArgb(255,120,5)),
+            new Tuple<Color,Color>(Color.FromArgb(125,125,125),Color.FromArgb(10,217,232)),
+            new Tuple<Color,Color>(Color.FromArgb(161,8,0),Color.FromArgb(255,191,0)),
+            new Tuple<Color,Color>(Color.FromArgb(221,0,255),Color.FromArgb(255,120,5))
+
         };
 
         /// <summary>
