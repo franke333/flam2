@@ -9,7 +9,6 @@ namespace flam2
 {
     class Flame
     {
-        public int palleteIndex=0;
         public int width, height;
         public float centerX=0, centerY=0; //from -1 to 1 (0 = middle)
         public int scale=50;
@@ -18,6 +17,7 @@ namespace flam2
         public int quality=10;
         public Color bgColor= Color.Black;
         public float gamma = 2.2f;
+        public int frames = 1;
 
         public Function[] funcs;
         public float[] weights;
@@ -53,6 +53,14 @@ namespace flam2
             return new Tuple<int, int>((int)x, (int)y);
         }
 
+        public void Update()
+        {
+            foreach(Function func in funcs)
+            {
+                func.updateCoeffs();
+            }
+        }
+
         public Bitmap Run(Form1 form)
         {
             UInt32[,] r = new UInt32[width * oversample, height * oversample];
@@ -77,10 +85,23 @@ namespace flam2
                     form.updateProgress();
                 }
                 int currFunc = chooseFuncIndex((float)rand.NextDouble() * weightSum);
-                Point help = postion;
                 postion = funcs[currFunc].Apply(postion);
                 if (i > 20)
                 {
+                    // if flame went out of bounds
+                    if (float.IsInfinity(postion.x) || float.IsInfinity(postion.y)
+                        || float.IsNaN(postion.x) || float.IsNaN(postion.y)) {
+                        bmp = new Bitmap(100, 100);
+                        for (int j = 0; j < 100; j++)
+                        {
+                            for (int k = 0; k < 100; k++)
+                            {
+                                bmp.SetPixel(j, k, Color.Red);
+                            }
+                        }
+                        return bmp;
+                        
+                    }
                     Tuple<int, int> pixPos = whereInPixels(postion);
                     if (pixPos != null) //add counter for missed ticks later
                     {

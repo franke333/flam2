@@ -10,6 +10,7 @@ namespace flam2
     {
         public abstract Point flame(Point point);
 
+
     }
 
     class Spherical : Variation
@@ -106,6 +107,100 @@ namespace flam2
             float r = (float)Math.Sqrt(point.x * point.x + point.y * point.y);
             float p0 = (float)Math.Sin(omega + r); float p1 = (float)Math.Cos(omega - r);
             return new Point((p0 * p0 * p0 + p1 * p1 * p1) * r, (p0 * p0 * p0 - p1 * p1 * p1) * r, point.c);
+        }
+    }
+
+    class Horseshoe : Variation
+    {
+        public override Point flame(Point point)
+        {
+            float r = (float)Math.Sqrt(point.x * point.x + point.y * point.y);
+            return new Point((point.x * point.x-point.y*point.y)/r, 2*point.x*point.y/r, point.c);
+        }
+    }
+
+    class Polar : Variation
+    {
+        public override Point flame(Point point)
+        {
+            float r = (float)Math.Sqrt(point.x * point.x + point.y * point.y);
+            double omega = Math.Atan2(point.x, point.y);
+            return new Point((float)(omega/Math.PI), r-1, point.c);
+        }
+    }
+
+    class Heart : Variation
+    {
+        public override Point flame(Point point)
+        {
+            float r = (float)Math.Sqrt(point.x * point.x + point.y * point.y);
+            double omega = Math.Atan2(point.x, point.y);
+            return new Point((float)Math.Sin(omega*r)*r , (float)(-Math.Cos(omega*r)*r) , point.c);
+        }
+    }
+
+    class Disc : Variation
+    {
+        public override Point flame(Point point)
+        {
+            float r = (float)Math.Sqrt(point.x * point.x + point.y * point.y);
+            double omega = Math.Atan2(point.x, point.y);
+            return new Point((float)(Math.Sin(Math.PI * r) * omega / Math.PI), (float)(Math.Cos(Math.PI * r) * omega / Math.PI), point.c);
+        }
+    }
+
+    class Spiral : Variation
+    {
+        public override Point flame(Point point)
+        {
+            float r = (float)Math.Sqrt(point.x * point.x + point.y * point.y);
+            double omega = Math.Atan2(point.x, point.y);
+            float x =(1/r)* (float)(Math.Cos(omega)+Math.Sin(r));
+            float y = (1 / r) * (float)(Math.Sin(omega) - Math.Cos(r));
+            return new Point(x,y, point.c);
+        }
+    }
+
+    class Diamond : Variation
+    {
+        public override Point flame(Point point)
+        {
+            float r = (float)Math.Sqrt(point.x * point.x + point.y * point.y);
+            double omega = Math.Atan2(point.x, point.y);
+            float x = (float)(Math.Sin(omega)*Math.Cos(r));
+            float y = (float)(Math.Cos(omega) * Math.Sin(r));
+            return new Point(x, y, point.c);
+        }
+    }
+
+    class Julia : Variation
+    {
+        Random rand;
+        public Julia()
+        {
+            rand = new Random();
+        }
+        public override Point flame(Point point)
+        {
+            
+            float pi = this.rand.Next(0, 2) * (float)Math.PI;
+            float r = (float)Math.Sqrt(point.x * point.x + point.y * point.y);
+            double omega = Math.Atan2(point.x, point.y);
+            float x =(float)(Math.Sqrt(r)*Math.Cos(omega/2+pi));
+            float y = (float)(Math.Sqrt(r) * Math.Sin(omega / 2 + pi)) ;
+            return new Point(x, y, point.c);
+        }
+    }
+
+    class Exponemtial : Variation
+    {
+        public override Point flame(Point point)
+        {
+            float r = (float)Math.Sqrt(point.x * point.x + point.y * point.y);
+            double omega = Math.Atan2(point.x, point.y);
+            float x = (float)(Math.Exp(point.x-1) * Math.Cos(Math.PI*point.y));
+            float y = (float)(Math.Exp(point.x - 1) * Math.Sin(Math.PI * point.y));
+            return new Point(x, y, point.c);
         }
     }
 }

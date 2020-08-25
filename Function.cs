@@ -10,6 +10,7 @@ namespace flam2
     class Function
     {
         public float[] coeffs;
+        public float[] coeffsUpd;
         public Variation var;
         public Color color;
         public Function(float[] coeffs,Variation var, Color color)
@@ -33,6 +34,15 @@ namespace flam2
         private Point Affine(Point input)
         {
             return new Point(coeffs[0] * input.x + coeffs[1] * input.y + coeffs[2], coeffs[3] * input.x + coeffs[4] * input.y + coeffs[5],input.c);
+        }
+
+        public void updateCoeffs()
+        {
+            if (coeffsUpd == null) return;
+            for (int i = 0; i < 6; i++)
+            {
+                coeffs[i] += coeffsUpd[i];
+            }
         }
 
         /// <summary>
